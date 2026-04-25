@@ -9,8 +9,8 @@ export default function ProductDetailsSection() {
             {/* Left/Image Content */}
             <div className="w-full lg:w-1/2">
                 <div className="grid grid-cols-2 gap-4">
-                    <img src="https://placehold.co/400x500/1e3a8a/white?text=Detail+Image+1" alt="Product Detail 1" className="rounded-3xl shadow-xl hover:scale-105 transition-transform" />
-                    <img src="https://placehold.co/400x500/F29B61/white?text=Detail+Image+2" alt="Product Detail 2" className="rounded-3xl shadow-xl mt-8 hover:scale-105 transition-transform" />
+                    <img src="/product.png" alt="علبة فلاشة نور الذكية" className="rounded-3xl shadow-xl hover:scale-105 transition-transform w-full object-cover aspect-[4/5]" />
+                    <img src="/hero.png" alt="طفل يتعلم من الفلاشة" className="rounded-3xl shadow-xl mt-8 hover:scale-105 transition-transform w-full object-cover aspect-[4/5]" />
                 </div>
             </div>
   

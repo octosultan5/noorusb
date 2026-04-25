@@ -7,12 +7,15 @@ import { submitOrder } from "../actions/order";
 export default function CheckoutForm({ id = "checkout" }: { id?: string }) {
     const router = useRouter();
     const [bundle, setBundle] = useState<number>(2);
+    const [orderBump, setOrderBump] = useState<boolean>(false);
     
     // Pricing logic
     let price = 249;
     if (bundle === 1) price = 249; // 1 USB
     if (bundle === 2) price = 399; // 2 USBs
     if (bundle === 3) price = 549; // 3 USBs
+    
+    if (orderBump) price += 99; // Add bump price
 
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -38,6 +41,7 @@ export default function CheckoutForm({ id = "checkout" }: { id?: string }) {
             let finalPrice = 399;
             if (bundle === 1) finalPrice = 249;
             if (bundle === 3) finalPrice = 549;
+            if (orderBump) finalPrice += 99;
 
             // Call the secure Server Action
             const result = await submitOrder({
@@ -45,7 +49,8 @@ export default function CheckoutForm({ id = "checkout" }: { id?: string }) {
                 phone: cleanPhone,
                 city,
                 bundle_type: bundle,
-                total_price: finalPrice
+                total_price: finalPrice,
+                has_bump: orderBump
             });
 
             if (!result.success) {
@@ -74,8 +79,15 @@ export default function CheckoutForm({ id = "checkout" }: { id?: string }) {
             </div>
 
             <div className="container mx-auto px-5 max-w-5xl">
-                <h2 className="text-4xl md:text-5xl font-black mb-4 text-center">أطلب الآن وادفع عند الاستلام</h2>
-                <p className="text-xl text-brand-accent font-bold text-center mb-12">التوصيل مجاني لجميع مدن المغرب 🇲🇦</p>
+                <div className="text-center mb-8">
+                    <h2 className="text-4xl md:text-5xl font-black mb-4">أطلب الآن وادفع عند الاستلام</h2>
+                    <p className="text-xl text-brand-accent font-bold mb-4">التوصيل مجاني لجميع مدن المغرب 🇲🇦</p>
+                    
+                    {/* Urgency Element */}
+                    <div className="inline-block bg-red-100 border border-red-200 text-red-700 px-6 py-2 rounded-full font-bold animate-pulse-slow">
+                        <i className="fa-solid fa-fire mr-2"></i> سارع بالطلب! الكمية المتبقية: <span className="text-xl">4</span> قطع فقط
+                    </div>
+                </div>
 
                 <div className="bg-white text-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col lg:flex-row">
                     
@@ -157,6 +169,21 @@ export default function CheckoutForm({ id = "checkout" }: { id?: string }) {
                                     </div>
                                 </div>
                                 <span className="font-black text-xl">549 درهم</span>
+                            </div>
+                        </div>
+
+                        {/* Order Bump */}
+                        <div className={`mt-6 p-4 rounded-xl border-2 transition-all cursor-pointer flex gap-4 ${orderBump ? 'border-brand-primary bg-blue-50' : 'border-dashed border-brand-accent bg-orange-50/50 hover:bg-orange-50'}`} onClick={() => setOrderBump(!orderBump)}>
+                            <div className="pt-1">
+                                <div className={`w-6 h-6 rounded border-2 flex items-center justify-center ${orderBump ? 'bg-brand-primary border-brand-primary' : 'border-slate-400 bg-white'}`}>
+                                    {orderBump && <i className="fa-solid fa-check text-white text-sm"></i>}
+                                </div>
+                            </div>
+                            <div>
+                                <h4 className="font-black text-lg text-slate-800 flex items-center gap-2">
+                                    أضف فلاشة السيارة <span className="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full animate-pulse">عرض خاص</span>
+                                </h4>
+                                <p className="text-sm text-slate-600 mt-1 leading-tight">احصل على فلاش ميموري إضافية للسيارة تحتوي على أناشيد وقرآن فقط بـ <span className="font-bold text-brand-accent">99 درهم</span> بدلاً من 199 درهم!</p>
                             </div>
                         </div>
 

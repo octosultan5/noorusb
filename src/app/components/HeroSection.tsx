@@ -63,13 +63,12 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full lg:w-1/2 relative"
           >
-            <div className="relative w-full aspect-square max-w-md mx-auto">
+            <div className="relative w-full aspect-square max-w-md mx-auto rounded-full">
               <div className="absolute inset-0 bg-gradient-to-br from-brand-accent/30 to-brand-green/30 rounded-full blur-3xl animate-pulse-slow"></div>
-              {/* Note: In production we will use the generated image path or next/image */}
               <img 
-                src="https://placehold.co/600x600/f8fafc/1e3a8a?text=Premium+USB+Mockup" 
+                src="/hero.png" 
                 alt="NoorUSB Premium Mockup" 
-                className="w-full h-full object-contain relative z-10 animate-float drop-shadow-2xl"
+                className="w-full h-full object-cover rounded-full relative z-10 animate-float shadow-2xl border-4 border-white"
               />
             </div>
           </motion.div>
