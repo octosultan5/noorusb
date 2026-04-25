@@ -17,6 +17,21 @@ type Order = {
 export default function AdminDashboard() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
+  
+  // Basic Auth State
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [authError, setAuthError] = useState("");
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // كلمة المرور الافتراضية (يمكن تغييرها لاحقاً)
+    if (passwordInput === "noor123") {
+      setIsAuthenticated(true);
+    } else {
+      setAuthError("كلمة المرور غير صحيحة");
+    }
+  };
 
   const fetchOrders = async () => {
     setLoading(true);
@@ -58,6 +73,38 @@ export default function AdminDashboard() {
       default: return <span className="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-bold">{status}</span>;
     }
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <form onSubmit={handleLogin} className="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 w-full max-w-md">
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-black text-brand-primary mb-2">لوحة الإدارة</h1>
+            <p className="text-slate-500 font-bold">الرجاء إدخال كلمة المرور للمتابعة</p>
+          </div>
+          
+          {authError && (
+            <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm font-bold text-center mb-4">
+              {authError}
+            </div>
+          )}
+          
+          <input 
+            type="password" 
+            placeholder="كلمة المرور" 
+            value={passwordInput}
+            onChange={(e) => setPasswordInput(e.target.value)}
+            className="w-full bg-slate-50 border-2 border-slate-200 rounded-xl px-5 py-4 text-lg focus:border-brand-accent focus:outline-none mb-4 text-center"
+            dir="ltr"
+          />
+          
+          <button type="submit" className="w-full btn-primary py-4 text-xl flex justify-center items-center gap-2">
+            دخول <i className="fa-solid fa-lock"></i>
+          </button>
+        </form>
+      </div>
+    );
+  }
 
   return (
     <div>
