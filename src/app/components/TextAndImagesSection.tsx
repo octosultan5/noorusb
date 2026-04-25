@@ -17,10 +17,11 @@ export default function TextAndImagesSection() {
               className="w-full lg:w-1/2"
             >
               <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-50 group">
-                <div className="absolute inset-0 bg-blue-100 flex items-center justify-center text-blue-300 group-hover:scale-105 transition-transform duration-700">
-                  <i className="fa-solid fa-image text-6xl"></i>
-                  <span className="absolute bottom-4 right-4 text-sm font-bold opacity-70">صورة توضيحية 1</span>
-                </div>
+                <img 
+                  src="/learning_tv.png" 
+                  alt="محتوى آمن على شاشة التلفاز" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </motion.div>
             
@@ -65,10 +66,11 @@ export default function TextAndImagesSection() {
               className="w-full lg:w-1/2"
             >
               <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-50 group">
-                <div className="absolute inset-0 bg-orange-100 flex items-center justify-center text-orange-300 group-hover:scale-105 transition-transform duration-700">
-                  <i className="fa-solid fa-image text-6xl"></i>
-                  <span className="absolute bottom-4 right-4 text-sm font-bold opacity-70">صورة توضيحية 2</span>
-                </div>
+                <img 
+                  src="/gift.png" 
+                  alt="أب يقدم هدية لطفله" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
               </div>
             </motion.div>
             
