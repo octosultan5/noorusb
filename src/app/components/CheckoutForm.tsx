@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { submitOrder } from "../actions/order";
 
 export default function CheckoutForm({ id = "checkout" }: { id?: string }) {
     const router = useRouter();
@@ -39,20 +39,19 @@ export default function CheckoutForm({ id = "checkout" }: { id?: string }) {
             if (bundle === 1) finalPrice = 249;
             if (bundle === 3) finalPrice = 549;
 
-            // Optional: Insert into Supabase (if configured)
-            // If NEXT_PUBLIC_SUPABASE_URL isn't configured, this will just fail gracefully
-            // or we could check if supabase Url is provided.
-            if (process.env.NEXT_PUBLIC_SUPABASE_URL) {
-                const { error: dbError } = await supabase.from('orders').insert([
-                    { name, phone: cleanPhone, city, bundle_type: bundle, total_price: finalPrice }
-                ]);
-                
-                if (dbError) {
-                    console.error("Supabase insert error:", dbError);
-                    // Decide if we want to block the user or not - usually COD stores let it pass to local state or email if DB fails
-                }
-            } else {
-                console.log("Supabase not configured. Mocking API call.", { name, phone: cleanPhone, city, bundle, finalPrice });
+            // Call the secure Server Action
+            const result = await submitOrder({
+                name,
+                phone: cleanPhone,
+                city,
+                bundle_type: bundle,
+                total_price: finalPrice
+            });
+
+            if (!result.success) {
+                setError(result.error || "حدث خطأ غير متوقع.");
+                setIsSubmitting(false);
+                return;
             }
 
             // Redirect smoothly
