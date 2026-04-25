@@ -2,12 +2,12 @@
 
 export default function VideoCategories() {
   const categories = [
-    { title: "الإنجليزية للأطفال", img: "https://placehold.co/400x300/1e3a8a/white?text=English", label: "English for Kids" },
-    { title: "الإسلام ممتع", img: "https://placehold.co/400x300/10b981/white?text=Islam", label: "Islam for Kids" },
-    { title: "قصص الأنبياء", img: "https://placehold.co/400x300/F29B61/white?text=Prophets", label: "Stories" },
-    { title: "اللغة الفرنسية", img: "https://placehold.co/400x300/9333ea/white?text=French", label: "French FF" },
-    { title: "أناشيد بدون موسيقى", img: "https://placehold.co/400x300/f59e0b/white?text=Nasheed", label: "Songs" },
-    { title: "السيرة والعقيدة", img: "https://placehold.co/400x300/0ea5e9/white?text=Aqeedah", label: "Basics" },
+    { title: "الإنجليزية للأطفال", img: "/cat_english.png", label: "English for Kids" },
+    { title: "الإسلام ممتع", img: "/cat_islam.png", label: "Islam for Kids" },
+    { title: "قصص الأنبياء", img: "/cat_prophets.png", label: "Stories" },
+    { title: "اللغة الفرنسية", img: "/cat_french.png", label: "French FF" },
+    { title: "أناشيد بدون موسيقى", img: "/cat_nasheed.png", label: "Songs" },
+    { title: "السيرة والعقيدة", img: "/cat_seerah.png", label: "Basics" },
   ];
 
   return (
