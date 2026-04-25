@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden font-cairo">
       {/* Sticky Top Bar */}
-      <div className="bg-brand-accent text-white text-center py-2 font-bold text-sm relative z-50">
-        <span className="animate-pulse inline-block">🔥 عرض حصري: طلبية اليوم مع توصيل مجاني لكل المغرب!</span>
+      <div className="bg-brand-accent text-white text-center py-2 font-bold text-sm relative z-50 shadow-md">
+        <span className="animate-pulse-slow inline-block">🔥 عرض حصري: طلبية اليوم مع توصيل مجاني لكل المغرب!</span>
       </div>
 
       <Header />
