@@ -9,8 +9,8 @@ export default function ProductDetailsSection() {
             {/* Left/Image Content */}
             <div className="w-full lg:w-1/2">
                 <div className="grid grid-cols-2 gap-4">
-                    <img src="/product.png" alt="علبة فلاشة نور الذكية" className="rounded-3xl shadow-xl hover:scale-105 transition-transform w-full object-cover aspect-[4/5]" />
-                    <img src="/hero.png" alt="طفل يتعلم من الفلاشة" className="rounded-3xl shadow-xl mt-8 hover:scale-105 transition-transform w-full object-cover aspect-[4/5]" />
+                    <img src="/usb_col.png" alt="مجموعة فلاشات نور التعليمية" className="rounded-3xl shadow-xl hover:scale-105 transition-transform w-full object-cover aspect-[4/5]" />
+                    <img src="/tv.png" alt="أطفال يتعلمون عبر التلفاز" className="rounded-3xl shadow-xl mt-8 hover:scale-105 transition-transform w-full object-cover aspect-[4/5]" />
                 </div>
             </div>
   

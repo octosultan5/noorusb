@@ -8,6 +8,7 @@ import VideoCategories from "./components/VideoCategories";
 import TextAndImagesSection from "./components/TextAndImagesSection";
 import VideoOverview from "./components/VideoOverview";
 import Footer from "./components/Footer";
+import ReviewsSection from "./components/ReviewsSection";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <TextAndImagesSection />
       <ProductDetailsSection />
       <VideoCategories />
+      <ReviewsSection />
       <CheckoutForm id="checkout" />
       <Footer />
 
