@@ -8,9 +8,9 @@ export default function HeroSection() {
     document.getElementById("checkout")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const lineVariants = {
+  const lineVariants: any = {
     hidden: { y: 100, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } }
+    visible: { y: 0, opacity: 1, transition: { duration: 0.8 } }
   };
 
   return (
@@ -19,7 +19,7 @@ export default function HeroSection() {
       <motion.div 
         initial={{ scale: 1 }}
         animate={{ scale: 1.1 }}
-        transition={{ duration: 20, ease: "linear", repeat: Infinity, repeatType: "reverse" }}
+        transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" as const }}
         className="absolute inset-0 w-full h-full"
       >
         <Image 
@@ -38,7 +38,7 @@ export default function HeroSection() {
       <motion.div 
         initial={{ x: "-100%" }}
         animate={{ x: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 1.2 }}
         className="absolute top-0 right-0 w-full h-full pointer-events-none z-0"
       >
         {/* Right side primary slash */}
@@ -49,7 +49,7 @@ export default function HeroSection() {
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut", delay: 0.3 }}
+        transition={{ duration: 1.2, delay: 0.3 }}
         className="absolute bottom-0 left-0 w-full h-full pointer-events-none z-0"
       >
         {/* Left corner accent triangle */}
@@ -80,12 +80,12 @@ export default function HeroSection() {
               </motion.span>
             </motion.div>
             <motion.div className="overflow-hidden mb-2">
-              <motion.span variants={lineVariants} initial="hidden" animate="visible" transition={{ delay: 0.1, duration: 0.8, ease: "easeOut" }} className="block text-[#F29B61]">
+              <motion.span variants={lineVariants} initial="hidden" animate="visible" transition={{ delay: 0.1, duration: 0.8 }} className="block text-[#F29B61]">
                 في 2026
               </motion.span>
             </motion.div>
             <motion.div className="overflow-hidden mt-4">
-              <motion.span variants={lineVariants} initial="hidden" animate="visible" transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }} className="block text-[0.6em] text-white/90">
+              <motion.span variants={lineVariants} initial="hidden" animate="visible" transition={{ delay: 0.2, duration: 0.8 }} className="block text-[0.6em] text-white/90">
                 مكتبة ذكية في جيبك!
               </motion.span>
             </motion.div>
@@ -123,7 +123,7 @@ export default function HeroSection() {
         <motion.div 
           initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
+          transition={{ duration: 1.2, delay: 0.4 }}
           className="w-full lg:w-2/5 relative mt-12 lg:mt-0 hidden md:block"
         >
           <div className="relative w-full aspect-square max-w-[450px] mx-auto">
@@ -152,7 +152,7 @@ export default function HeroSection() {
         <div className="w-16 h-[2px] bg-white/10 relative overflow-hidden">
           <motion.div 
             animate={{ x: [64, -64] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
             className="absolute top-0 right-0 w-1/2 h-full bg-[#F29B61]"
           />
         </div>
